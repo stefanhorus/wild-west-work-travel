@@ -441,6 +441,7 @@ function TestimonialsSection() {
       initials: "R",
       location: "Medora, 2024",
       text: "Work and Travel a fost una dintre cele mai frumoase experiențe din viața mea. M-a ajutat să mă maturizez, să ies din zona de confort și să am mai multă încredere în mine. Nu a fost mereu ușor, dar a meritat din plin. Cel mai important a fost să fiu ambițioasă! Este o experiență genială și aș recomanda-o oricui!!",
+      avatar: "/review-riana.jpg",
     },
     {
       name: "Andrei M.",
@@ -483,7 +484,22 @@ function TestimonialsSection() {
               </div>
               <p className="testimonial-text">{t.text}</p>
               <div className="testimonial-author">
-                <div className="testimonial-avatar">{t.initials}</div>
+                <div className="testimonial-avatar" style={{ overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {t.avatar ? (
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%"
+                      }}
+                    />
+                  ) : (
+                    t.initials
+                  )}
+                </div>
                 <div className="testimonial-info">
                   <h4>{t.name}</h4>
                   <p>{t.location}</p>
