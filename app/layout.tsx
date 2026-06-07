@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Wild west work & travel | Work & Travel USA 2027 – Aventura Ta Americană",
+  title: "Wild West: work & travel - Aventura Ta Americană",
   description:
     "Agenție de Work & Travel premium din România. Programe Work and Travel USA 2027 cu 30% mai ieftin, de 2x mai rapid, fără costuri ascunse. Înscrie-te acum!",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "work and travel România",
   ],
   openGraph: {
-    title: "Wild West Travel | Work & Travel USA 2027",
+    title: "Wild West: work & travel - Aventura Ta Americană",
     description:
       "Aventura ta americană începe aici. Programe Work & Travel mai ieftin, mai rapid, mai simplu.",
     type: "website",
