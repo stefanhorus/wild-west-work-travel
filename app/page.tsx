@@ -57,33 +57,40 @@ function Navbar({ scrolled }: { scrolled: boolean }) {
 
           <button
             className="mobile-menu-btn"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Deschide meniu"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Închide meniu" : "Deschide meniu"}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            {mobileOpen ? (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
           </button>
         </div>
       </nav>
 
       <div className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
-        <button
-          className="mobile-close"
-          onClick={() => setMobileOpen(false)}
-          aria-label="Închide meniu"
-        >
-          ✕
-        </button>
         {navItems.map((item) => (
           <a
             key={item.href}
