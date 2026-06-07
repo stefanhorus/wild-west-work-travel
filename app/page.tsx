@@ -437,10 +437,10 @@ function DestinationsSection() {
 function TestimonialsSection() {
   const testimonials = [
     {
-      name: "Alexandra P.",
-      initials: "AP",
-      location: "Ocean City, 2024",
-      text: "Cea mai tare vară din viața mea! Echipa Wild West m-a ajutat cu tot — de la viză la cazare. Am lucrat la un restaurant pe boardwalk și am făcut prieteni din toată lumea.",
+      name: "Riana",
+      initials: "R",
+      location: "Medora, 2024",
+      text: "Work and Travel a fost una dintre cele mai frumoase experiențe din viața mea. M-a ajutat să mă maturizez, să ies din zona de confort și să am mai multă încredere în mine. Nu a fost mereu ușor, dar a meritat din plin. Cel mai important a fost să fiu ambițioasă! Este o experiență genială și aș recomanda-o oricui!!",
     },
     {
       name: "Andrei M.",
