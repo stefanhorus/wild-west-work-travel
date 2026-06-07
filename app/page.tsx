@@ -168,6 +168,58 @@ function TopBar({ scrolled }: { scrolled: boolean }) {
 }
 
 /* =============================================
+   ANIMATED COUNTER COMPONENT
+   ============================================= */
+interface AnimatedCounterProps {
+  start: number;
+  end: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}
+
+function AnimatedCounter({
+  start,
+  end,
+  duration = 2000,
+  prefix = "",
+  suffix = "",
+  decimals = 0,
+}: AnimatedCounterProps) {
+  const [count, setCount] = useState(start);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const currentValue = progress * (end - start) + start;
+      setCount(currentValue);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setCount(end);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [start, end, duration]);
+
+  let formattedValue = count.toFixed(decimals);
+  if (count === end && formattedValue.endsWith(".0")) {
+    formattedValue = formattedValue.slice(0, -2);
+  }
+
+  return (
+    <span>
+      {prefix}
+      {formattedValue}
+      {suffix}
+    </span>
+  );
+}
+
+/* =============================================
    HERO SECTION
    ============================================= */
 function HeroSection() {
@@ -226,17 +278,23 @@ function HeroSection() {
         <div className="hero-stats">
           <div className="hero-stat">
             <div className="hero-stat-icon">👥</div>
-            <div className="hero-stat-value">-30%</div>
+            <div className="hero-stat-value">
+              <AnimatedCounter start={0} end={-30} suffix="%" />
+            </div>
             <div className="hero-stat-label">Mai ieftin</div>
           </div>
           <div className="hero-stat">
             <div className="hero-stat-icon">⚡</div>
-            <div className="hero-stat-value">2x</div>
+            <div className="hero-stat-value">
+              <AnimatedCounter start={0.0} end={2.0} decimals={1} suffix="x" />
+            </div>
             <div className="hero-stat-label">Mai Rapid</div>
           </div>
           <div className="hero-stat">
             <div className="hero-stat-icon">⭐</div>
-            <div className="hero-stat-value">0</div>
+            <div className="hero-stat-value">
+              <AnimatedCounter start={6} end={0} />
+            </div>
             <div className="hero-stat-label">Costuri Ascunse</div>
           </div>
         </div>
